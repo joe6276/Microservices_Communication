@@ -3,11 +3,11 @@ const db= require('mssql')
 const { randomBytes } = require('crypto')
 const axios= require('axios')
 
-async function getUsers(req, res){
+async function getUsers (req, res){
     try {
         
         let pool= await db.connect(config)
-        let user= await pool.request().query('select * FROM post')
+        let user= await pool.request().query('select * FROM post_table')
         res.json(user.recordsets[0])
         
         return user.recordsets
@@ -19,6 +19,7 @@ async function getUsers(req, res){
     
     }
 }
+
 
 
 async function addPost(req,res){
